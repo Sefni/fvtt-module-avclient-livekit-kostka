@@ -97,5 +97,14 @@
   "LIVEKITAVCLIENT.unmuteUserLocal": "Unmute user (local)",
   "LIVEKITAVCLIENT.hideUserLocal": "Hide video (local)",
   "LIVEKITAVCLIENT.showUserLocal": "Show video (local)",
+  "LIVEKITAVCLIENT.resizableBar": "Resizable Camera Bar",
+  "LIVEKITAVCLIENT.resizableBarHint": "Enable drag-to-resize on the camera bar. A handle appears on the inner edge when you hover over it. Double-click to reset to default size.",
+  "LIVEKITAVCLIENT.resizableBarMaxWidth": "Camera Bar Max Width",
+  "LIVEKITAVCLIENT.resizableBarMaxWidthHint": "Maximum width in pixels for left/right camera bars.",
+  "LIVEKITAVCLIENT.resizableBarMaxHeight": "Camera Bar Max Height",
+  "LIVEKITAVCLIENT.resizableBarMaxHeightHint": "Maximum height in pixels for top/bottom camera bars.",
+  "LIVEKITAVCLIENT.resizableBarMinSize": "Camera Bar Min Size",
+  "LIVEKITAVCLIENT.resizableBarMinSizeHint": "Minimum width/height in pixels. Prevents the bar from becoming too small.",
+  "LIVEKITAVCLIENT.resizeHandleTooltip": "Drag to resize \u00b7 Double-click to reset",
   "WEBRTC.TABS.livekit": "LiveKit AVClient"
 }

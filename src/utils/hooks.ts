@@ -1,5 +1,6 @@
 import type { SocketMessage } from "../../types/avclient-livekit";
 import LiveKitAVConfig from "../LiveKitAVConfig";
+import { initResizableBar } from "../resizableCameraBar";
 import { MODULE_NAME } from "./constants";
 import registerModuleSettings from "./registerModuleSettings";
 
@@ -27,6 +28,7 @@ Hooks.on("init", () => {
         cameraViewsElement,
       );
     }
+    initResizableBar(cameraViewsElement);
   });
 });
 

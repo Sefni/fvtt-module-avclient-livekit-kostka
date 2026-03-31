@@ -82,5 +82,14 @@
   "LIVEKITAVCLIENT.devModeHint": "Dodaje dodatkowe ustawienia dla programistów.",
   "LIVEKITAVCLIENT.forceTurn": "Wymagany przekaźnik TURN",
   "LIVEKITAVCLIENT.forceTurnHint": "Ustawia połączenie z wymaganym przekaźnikiem za pośrednictwem TURN.",
+  "LIVEKITAVCLIENT.resizableBar": "Regulowany pasek kamer",
+  "LIVEKITAVCLIENT.resizableBarHint": "Włącz zmianę rozmiaru paska kamer przez przeciąganie. Uchwyt pojawia się na wewnętrznej krawędzi po najechaniu kursorem. Podwójne kliknięcie resetuje do domyślnego rozmiaru.",
+  "LIVEKITAVCLIENT.resizableBarMaxWidth": "Maks. szerokość paska kamer",
+  "LIVEKITAVCLIENT.resizableBarMaxWidthHint": "Maksymalna szerokość w pikselach dla pasków kamer po lewej/prawej stronie.",
+  "LIVEKITAVCLIENT.resizableBarMaxHeight": "Maks. wysokość paska kamer",
+  "LIVEKITAVCLIENT.resizableBarMaxHeightHint": "Maksymalna wysokość w pikselach dla pasków kamer na górze/na dole.",
+  "LIVEKITAVCLIENT.resizableBarMinSize": "Min. rozmiar paska kamer",
+  "LIVEKITAVCLIENT.resizableBarMinSizeHint": "Minimalna szerokość/wysokość w pikselach. Zapobiega zbytniemu zmniejszeniu paska.",
+  "LIVEKITAVCLIENT.resizeHandleTooltip": "Przeciągnij, aby zmienić rozmiar · Podwójne kliknięcie, aby zresetować",
   "WEBRTC.TABS.livekit": "LiveKit AVClient"
 }

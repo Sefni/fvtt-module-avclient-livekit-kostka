@@ -123,5 +123,32 @@ declare global {
       blank: true;
       initial: string;
     }>;
+    "avclient-livekit.resizableBar": foundry.data.fields.BooleanField<{
+      initial: true;
+    }>;
+    "avclient-livekit.resizableBarMaxWidth": foundry.data.fields.NumberField<{
+      initial: 500;
+      min: 100;
+      max: 1000;
+      step: 10;
+    }>;
+    "avclient-livekit.resizableBarMaxHeight": foundry.data.fields.NumberField<{
+      initial: 400;
+      min: 60;
+      max: 800;
+      step: 10;
+    }>;
+    "avclient-livekit.resizableBarMinSize": foundry.data.fields.NumberField<{
+      initial: 80;
+      min: 40;
+      max: 200;
+      step: 5;
+    }>;
+    "avclient-livekit.savedBarSizes": {
+      left: number;
+      right: number;
+      top: number;
+      bottom: number;
+    };
   }
 }

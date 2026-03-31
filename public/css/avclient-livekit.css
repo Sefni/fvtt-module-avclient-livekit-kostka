@@ -77,6 +77,36 @@
   transform: scaleX(-1);
 }
 
+/* ─── Resizable Camera Bar Handle ───────────────────────────── */
+
+#camera-views {
+  resize: none !important;
+}
+
+.lk-resize-handle {
+  position: fixed;
+  border-radius: 3px;
+  background-color: rgba(200, 160, 96, 0.8);
+  transition: opacity 0.18s ease;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.lk-resize-handle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 1px,
+    transparent 1px
+  );
+  background-size: 6px 4px;
+  background-position: center;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 #av-config .form-fields > button {
   flex-basis: 100%;
 }

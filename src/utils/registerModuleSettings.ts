@@ -178,6 +178,68 @@ export default function registerModuleSettings(): void {
     requiresReload: true,
   });
 
+  // Resizable camera bar settings
+  game.settings?.register(MODULE_NAME, "resizableBar", {
+    name: "LIVEKITAVCLIENT.resizableBar",
+    hint: "LIVEKITAVCLIENT.resizableBarHint",
+    scope: "client",
+    config: true,
+    default: true,
+    type: new foundry.data.fields.BooleanField({ initial: true }),
+    requiresReload: true,
+  });
+
+  game.settings?.register(MODULE_NAME, "resizableBarMaxWidth", {
+    name: "LIVEKITAVCLIENT.resizableBarMaxWidth",
+    hint: "LIVEKITAVCLIENT.resizableBarMaxWidthHint",
+    scope: "client",
+    config: true,
+    default: 500,
+    type: new foundry.data.fields.NumberField({
+      initial: 500,
+      min: 100,
+      max: 1000,
+      step: 10,
+    }),
+    range: { min: 100, max: 1000, step: 10 },
+  });
+
+  game.settings?.register(MODULE_NAME, "resizableBarMaxHeight", {
+    name: "LIVEKITAVCLIENT.resizableBarMaxHeight",
+    hint: "LIVEKITAVCLIENT.resizableBarMaxHeightHint",
+    scope: "client",
+    config: true,
+    default: 400,
+    type: new foundry.data.fields.NumberField({
+      initial: 400,
+      min: 60,
+      max: 800,
+      step: 10,
+    }),
+    range: { min: 60, max: 800, step: 10 },
+  });
+
+  game.settings?.register(MODULE_NAME, "resizableBarMinSize", {
+    name: "LIVEKITAVCLIENT.resizableBarMinSize",
+    hint: "LIVEKITAVCLIENT.resizableBarMinSizeHint",
+    scope: "client",
+    config: true,
+    default: 80,
+    type: new foundry.data.fields.NumberField({
+      initial: 80,
+      min: 40,
+      max: 200,
+      step: 5,
+    }),
+    range: { min: 40, max: 200, step: 5 },
+  });
+
+  game.settings?.register(MODULE_NAME, "savedBarSizes", {
+    scope: "client",
+    config: false,
+    default: { left: 200, right: 200, top: 180, bottom: 180 },
+  });
+
   // Register debug logging setting
   game.settings?.register(MODULE_NAME, "debug", {
     name: "LIVEKITAVCLIENT.debug",

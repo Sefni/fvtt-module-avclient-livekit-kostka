@@ -13,7 +13,7 @@
       "twitter": "@bekit"
     }
   ],
-  "version": "0.6.6-beta.4",
+  "version": "0.6.6-beta.5",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -23,7 +23,7 @@
   "socket": true,
   "url": "https://github.com/Sefni/fvtt-module-avclient-livekit-kostka",
   "manifest": "https://github.com/Sefni/fvtt-module-avclient-livekit-kostka/releases/latest/download/module.json",
-  "download": "https://github.com/Sefni/fvtt-module-avclient-livekit-kostka/releases/download/v0.6.6-beta.4/fvtt-module-avclient-livekit.zip",
+  "download": "https://github.com/Sefni/fvtt-module-avclient-livekit-kostka/releases/download/v0.6.6-beta.5/fvtt-module-avclient-livekit.zip",
   "readme": "https://github.com/Sefni/fvtt-module-avclient-livekit-kostka/blob/main/README.md",
   "changelog": "https://github.com/Sefni/fvtt-module-avclient-livekit-kostka/blob/main/CHANGELOG.md",
   "bugs": "https://github.com/Sefni/fvtt-module-avclient-livekit-kostka/issues",
