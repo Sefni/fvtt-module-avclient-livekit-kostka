@@ -386,7 +386,10 @@ export default class LiveKitClient {
           if (userVideoElement instanceof HTMLVideoElement) {
             this.attachVideoTrack(this.videoTrack, userVideoElement);
           }
-          game.user?.broadcastActivity({ av: { hidden: false } });
+          // Broadcast the actual mute state rather than assuming visible
+          const videoTrack = this.videoTrack as LocalVideoTrack;
+          const isHidden = videoTrack.isMuted;
+          game.user?.broadcastActivity({ av: { hidden: isHidden } });
           this.avMaster.render();
         }
       }
