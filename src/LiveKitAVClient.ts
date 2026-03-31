@@ -61,6 +61,7 @@ export default class LiveKitAVClient extends foundry.av.AVClient {
 
     this._liveKitClient = new LiveKitClient(this);
     this.room = null;
+    // @ts-expect-error - fvtt-types causes excessive stack depth when comparing AVMaster types
     this.master.config = new LiveKitAVConfig({ webrtc: master });
   }
 

@@ -25,6 +25,7 @@ export default tseslint.config(
       "node_modules",
       "dist",
       "coverage",
+      ".claude",
       "vite.config.ts",
       "vitest.config.ts",
       "src/__tests__/**",

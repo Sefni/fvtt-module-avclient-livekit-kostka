@@ -339,7 +339,6 @@ export default class LiveKitClient {
         await this.initializeAudioTrack();
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (this.audioTrack) {
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           const audioTrack = this.audioTrack as LocalAudioTrack;
           await this.liveKitRoom?.localParticipant.publishTrack(
             audioTrack,
@@ -932,6 +931,7 @@ export default class LiveKitClient {
         if (
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           game.users?.get(userId)?.isGM &&
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           (!message.userId || message.userId === game.user?.id)
         ) {
           breakout(message.breakoutRoom, this);
