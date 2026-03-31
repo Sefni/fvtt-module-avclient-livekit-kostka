@@ -98,6 +98,32 @@ const saveSize = debounce((pos: BarPosition, size: number) => {
 
 // ── Size application ─────────────────────────────────────────
 
+/**
+ * Applies CSS custom properties --av-width / --av-height to the bar.
+ * Foundry v13 uses these variables to size individual .camera-view tiles.
+ * We use a fixed 4:3 aspect ratio to compute the dependent dimension.
+ */
+function applyCameraSize(bar: HTMLElement, pos: BarPosition, size: number): void {
+  const RATIO_W = 4;
+  const RATIO_H = 3;
+
+  if (isVertical(pos)) {
+    // size = bar width → camera tile width; compute height from aspect ratio
+    bar.style.setProperty("--av-width", String(size) + "px");
+    bar.style.setProperty(
+      "--av-height",
+      String(Math.round((size * RATIO_H) / RATIO_W)) + "px",
+    );
+  } else {
+    // size = bar height → camera tile height; compute width from aspect ratio
+    bar.style.setProperty("--av-height", String(size) + "px");
+    bar.style.setProperty(
+      "--av-width",
+      String(Math.round((size * RATIO_W) / RATIO_H)) + "px",
+    );
+  }
+}
+
 function applySize(
   bar: HTMLElement,
   pos: BarPosition,
@@ -109,11 +135,14 @@ function applySize(
   } else {
     bar.style.height = String(size) + "px";
   }
+  applyCameraSize(bar, pos, size);
 }
 
 function clearInlineSize(bar: HTMLElement): void {
   bar.style.width = "";
   bar.style.height = "";
+  bar.style.removeProperty("--av-width");
+  bar.style.removeProperty("--av-height");
 }
 
 // ── Handle positioning ───────────────────────────────────────
@@ -243,6 +272,7 @@ function createHandle(bar: HTMLElement): void {
           newSize = Math.min(maxH, Math.max(minSize, startH + dy));
           bar.style.height = String(newSize) + "px";
         }
+        applyCameraSize(bar, p, newSize);
         saveSize(p, newSize);
         positionHandle(bar, handle);
       });
