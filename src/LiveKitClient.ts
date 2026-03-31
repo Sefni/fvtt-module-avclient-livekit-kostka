@@ -924,6 +924,7 @@ export default class LiveKitClient {
         if (
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           game.users?.get(userId)?.isGM &&
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           (!message.userId || message.userId === game.user?.id)
         ) {
           breakout(message.breakoutRoom, this);
