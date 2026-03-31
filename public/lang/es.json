@@ -66,5 +66,14 @@
   "LIVEKITAVCLIENT.WarningCannotBroadcastUserVideo": "No puede habilitar la cámara del usuario porque no tiene permisos para enviar vídeo",
   "LIVEKITAVCLIENT.WarningCannotBroadcastUserAudio": "No puede habilitar el micrófono del usuario porque no tiene permisos para enviar vídeo",
   "LIVEKITAVCLIENT.WarningCannotEnableUserVideo": "No puede habilitar la cámara porque el usuario la ha desactivado",
-  "LIVEKITAVCLIENT.WarningCannotEnableUserAudio": "No puede habilitar el micrófono porque el usuario se ha silenciado"
+  "LIVEKITAVCLIENT.WarningCannotEnableUserAudio": "No puede habilitar el micrófono porque el usuario se ha silenciado",
+  "LIVEKITAVCLIENT.resizableBar": "Barra de cámaras redimensionable",
+  "LIVEKITAVCLIENT.resizableBarHint": "Permite redimensionar la barra de cámaras arrastrando un control en su borde interior. Haz doble clic para restablecer el tamaño predeterminado.",
+  "LIVEKITAVCLIENT.resizableBarMaxWidth": "Ancho máximo de la barra",
+  "LIVEKITAVCLIENT.resizableBarMaxWidthHint": "Ancho máximo en píxeles para las barras de cámaras izquierda/derecha.",
+  "LIVEKITAVCLIENT.resizableBarMaxHeight": "Altura máxima de la barra",
+  "LIVEKITAVCLIENT.resizableBarMaxHeightHint": "Altura máxima en píxeles para las barras de cámaras superior/inferior.",
+  "LIVEKITAVCLIENT.resizableBarMinSize": "Tamaño mínimo de la barra",
+  "LIVEKITAVCLIENT.resizableBarMinSizeHint": "Ancho/alto mínimo en píxeles. Evita que la barra sea demasiado pequeña.",
+  "LIVEKITAVCLIENT.resizeHandleTooltip": "Arrastra para redimensionar · Doble clic para restablecer"
 }
