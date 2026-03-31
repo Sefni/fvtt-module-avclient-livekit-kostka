@@ -339,11 +339,14 @@ export default class LiveKitClient {
         await this.initializeAudioTrack();
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (this.audioTrack) {
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+          const audioTrack = this.audioTrack as LocalAudioTrack;
           await this.liveKitRoom?.localParticipant.publishTrack(
-            this.audioTrack,
+            audioTrack,
             this.trackPublishOptions,
           );
-          game.user?.broadcastActivity({ av: { muted: false } });
+          // Broadcast the actual mute state rather than assuming unmuted
+          game.user?.broadcastActivity({ av: { muted: audioTrack.isMuted } });
           this.avMaster.render();
         }
       }
@@ -383,7 +386,10 @@ export default class LiveKitClient {
           if (userVideoElement instanceof HTMLVideoElement) {
             this.attachVideoTrack(this.videoTrack, userVideoElement);
           }
-          game.user?.broadcastActivity({ av: { hidden: false } });
+          // Broadcast the actual mute state rather than assuming visible
+          const videoTrack = this.videoTrack as LocalVideoTrack;
+          const isHidden = videoTrack.isMuted;
+          game.user?.broadcastActivity({ av: { hidden: isHidden } });
           this.avMaster.render();
         }
       }
@@ -770,7 +776,9 @@ export default class LiveKitClient {
     ui.notifications?.warn(disconnectWarning);
 
     // Clean up noise cancellation pipeline
-    this.noiseCancellation.destroy();
+    this.noiseCancellation.destroy().catch((error: unknown) => {
+      log.warn("Error destroying noise cancellation:", error);
+    });
 
     // Clear the participant map
     this.liveKitParticipants.clear();
@@ -1543,6 +1551,10 @@ export default class LiveKitClient {
         // Unpublish the screen share track
         await this.liveKitRoom?.localParticipant.unpublishTrack(screenTrack);
 
+        // Stop the screen track and detach from any elements
+        screenTrack.detach();
+        screenTrack.stop();
+
         // Restart our video track
         if (screenTrack instanceof LocalVideoTrack && this.videoTrack) {
           await this.liveKitRoom?.localParticipant.publishTrack(
@@ -1550,8 +1562,12 @@ export default class LiveKitClient {
             this.trackPublishOptions,
           );
 
-          if (this.videoTrack.isMuted) {
-            await this.videoTrack.unmute();
+          // Re-attach local video to the user's own camera view
+          const userVideoElement = document.querySelector(
+            `.camera-view[data-user="${game.user?.id ?? ""}"] video.user-video`,
+          );
+          if (userVideoElement instanceof HTMLVideoElement) {
+            this.attachVideoTrack(this.videoTrack, userVideoElement);
           }
         }
       }

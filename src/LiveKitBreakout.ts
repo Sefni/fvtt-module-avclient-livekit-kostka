@@ -16,8 +16,9 @@ export async function setBreakoutRoom(
   userId: string,
   breakoutRoom?: string,
 ): Promise<void> {
-  const breakoutRoomRegistry =
-    game.settings?.get(MODULE_NAME, "breakoutRoomRegistry") ?? {};
+  const breakoutRoomRegistry = {
+    ...(game.settings?.get(MODULE_NAME, "breakoutRoomRegistry") ?? {}),
+  };
   breakoutRoomRegistry[userId] = breakoutRoom;
   await game.settings?.set(
     MODULE_NAME,
