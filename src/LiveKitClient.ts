@@ -1554,8 +1554,12 @@ export default class LiveKitClient {
             this.trackPublishOptions,
           );
 
-          if (this.videoTrack.isMuted) {
-            await this.videoTrack.unmute();
+          // Re-attach local video to the user's own camera view
+          const userVideoElement = document.querySelector(
+            `.camera-view[data-user="${game.user?.id ?? ""}"] video.user-video`,
+          );
+          if (userVideoElement instanceof HTMLVideoElement) {
+            this.attachVideoTrack(this.videoTrack, userVideoElement);
           }
         }
       }
