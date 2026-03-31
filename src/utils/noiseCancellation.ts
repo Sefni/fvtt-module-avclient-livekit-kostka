@@ -129,12 +129,17 @@ export class NoiseCancellation {
     this._enabled = false;
   }
 
-  destroy(): void {
+  async destroy(): Promise<void> {
     this.cleanupNodes();
-    this.audioContext?.close().catch((error: unknown) => {
-      log.warn("Error closing audio context:", error);
-    });
-    this.audioContext = null;
-    this.initialized = false;
+    if (this.audioContext) {
+      const ctx = this.audioContext;
+      this.audioContext = null;
+      this.initialized = false;
+      await ctx.close().catch((error: unknown) => {
+        log.warn("Error closing audio context:", error);
+      });
+    } else {
+      this.initialized = false;
+    }
   }
 }
