@@ -411,7 +411,7 @@ export default class LiveKitClient {
     }
 
     const audioCaptureOptions: AudioCaptureOptions = {
-      deviceId: { ideal: audioSrc },
+      deviceId: { exact: audioSrc },
       channelCount: { ideal: 1 },
     };
 
@@ -1241,7 +1241,7 @@ export default class LiveKitClient {
       videoSrc !== "disabled" &&
       canBroadcastVideo
       ? {
-          deviceId: { ideal: videoSrc },
+          deviceId: { exact: videoSrc },
           resolution: videoResolution,
         }
       : false;
