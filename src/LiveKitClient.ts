@@ -1256,18 +1256,18 @@ export default class LiveKitClient {
     const url = `https://meet.livekit.io/custom?${params.toString()}`;
 
     await foundry.applications.api.DialogV2.confirm({
-      window: { title: `${LANG_NAME}.externalAVJoinTitle` },
+      window: { title: game.i18n?.localize(`${LANG_NAME}.externalAVJoinTitle`) ?? "LiveKit Web Client" },
       content: `<p>${
         game.i18n?.localize(`${LANG_NAME}.externalAVJoinMessage`) ??
         "externalAVJoinMessage"
       }</p>`,
       yes: {
-        label: `${LANG_NAME}.externalAVJoinButton`,
+        label: game.i18n?.localize(`${LANG_NAME}.externalAVJoinButton`) ?? "Join",
         icon: "fa-solid fa-check",
         callback: () => window.open(url),
       },
       no: {
-        label: `${LANG_NAME}.externalAVIgnoreButton`,
+        label: game.i18n?.localize(`${LANG_NAME}.externalAVIgnoreButton`) ?? "Ignore",
         icon: "fa-solid fa-xmark",
         callback: () => {
           log.info("Ignoring external LiveKit join request");
@@ -1518,7 +1518,7 @@ export default class LiveKitClient {
 
           // Attach the screen share video to our video element
           const userVideoElement = document.querySelector(
-            `.camera-view[data-user="${game.user?.id ?? ""}"]`,
+            `.camera-view[data-user="${game.user?.id ?? ""}"] video.user-video`,
           );
           if (userVideoElement instanceof HTMLVideoElement) {
             this.attachVideoTrack(screenTrack, userVideoElement);
@@ -1550,7 +1550,7 @@ export default class LiveKitClient {
             this.trackPublishOptions,
           );
 
-          if (!this.videoTrack.isMuted) {
+          if (this.videoTrack.isMuted) {
             await this.videoTrack.unmute();
           }
         }
