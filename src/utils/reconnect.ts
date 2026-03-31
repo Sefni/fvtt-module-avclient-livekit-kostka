@@ -52,6 +52,10 @@ export class ReconnectManager {
 
         connectFn()
           .then((success) => {
+            if (this.cancelled) {
+              resolve(false);
+              return;
+            }
             if (success) {
               this.reset();
               ui.notifications?.info(
@@ -66,6 +70,10 @@ export class ReconnectManager {
             }
           })
           .catch(() => {
+            if (this.cancelled) {
+              resolve(false);
+              return;
+            }
             this.attemptReconnect(connectFn)
               .then(resolve)
               .catch(() => { resolve(false); });
