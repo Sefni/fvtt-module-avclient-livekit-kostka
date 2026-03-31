@@ -1543,6 +1543,10 @@ export default class LiveKitClient {
         // Unpublish the screen share track
         await this.liveKitRoom?.localParticipant.unpublishTrack(screenTrack);
 
+        // Stop the screen track and detach from any elements
+        screenTrack.detach();
+        screenTrack.stop();
+
         // Restart our video track
         if (screenTrack instanceof LocalVideoTrack && this.videoTrack) {
           await this.liveKitRoom?.localParticipant.publishTrack(
