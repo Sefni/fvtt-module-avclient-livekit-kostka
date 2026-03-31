@@ -339,11 +339,14 @@ export default class LiveKitClient {
         await this.initializeAudioTrack();
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (this.audioTrack) {
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+          const audioTrack = this.audioTrack as LocalAudioTrack;
           await this.liveKitRoom?.localParticipant.publishTrack(
-            this.audioTrack,
+            audioTrack,
             this.trackPublishOptions,
           );
-          game.user?.broadcastActivity({ av: { muted: false } });
+          // Broadcast the actual mute state rather than assuming unmuted
+          game.user?.broadcastActivity({ av: { muted: audioTrack.isMuted } });
           this.avMaster.render();
         }
       }
